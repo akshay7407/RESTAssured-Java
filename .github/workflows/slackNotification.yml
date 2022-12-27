@@ -1,0 +1,17 @@
+name: Slack Pull Request Open Notification
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify slack pr open
+      uses: kv109/action-ready-for-review@0.1
+      env: 
+        SLACK_WEBHOOK: ${{ secrets.SLACK_REST_API }}
+        uses: rtCamp/action-slack-notify@v2
+        SLACK_CHANNEL: '#restapi'
+ 
